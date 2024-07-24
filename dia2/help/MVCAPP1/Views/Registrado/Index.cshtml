@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MVCAPP1.Models.Registrado>
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New","Create")
+</p>
+
+
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdRegistrado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Identificacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NombresCompletos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+     {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.IdRegistrado)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Identificacion)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NombresCompletos)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FechaRegistro)
+    </td>
+    <td>
+        @Html.ActionLink("Detalles", "Details", new { item.IdRegistrado }) |
+        @Html.ActionLink("Editar", "Edit", new { item.IdRegistrado }) |
+        @*@Html.ActionLink("Borrar", "Delete", new { item.IdRegistrado })*@
+        @*<a asp-action="Delete" asp-route-id="@item.IdRegistrado">Delete</a>*@
+    </td>
+</tr>
+     }
+
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model MVCAPP1.Models.Direcciones;
+
+
+@{
+
+    string NewId;
+
+    NewId = ViewBag.id;
+
+}
+
+
+<h2>Nueva Direccion</h2>
+
+<br />
+<dd>
+    <h1>Resgistrado Numero:</h1>
+    <h2> @ViewBag.id  </h2>
+</dd>
+
+@using (Html.BeginForm())
+{
+
+<div class="form-horizontal">
+
+    <hr />
+
+    @Html.ValidationSummary(true, "*", new { @class = "text-danger" })
+
+    @Html.Hidden("IdRegistrado")
+
+    <input type="hidden" name="IdRegistrado" id="IdRegistrado" value="@ViewBag.id" />
+
+    <label>DIRECCION: </label>
+    <div class="col-md-10">
+        @Html.EditorFor(model => model.Direccion, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Direccion, "", new { @class = "text-danger" })
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Guardar Direccion del Registrado" class="btn btn-dark" />
+        </div>
+    </div>
+
+</div>
+
+
+ }

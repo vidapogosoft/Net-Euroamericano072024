@@ -1,0 +1,48 @@
+﻿@model MVCAPP1.Models.Registrado;
+@using MVCAPP1.Models;
+@using MVCAPP1.Services;
+
+@{
+
+    List<Direcciones> direccion = new List<Direcciones>();
+
+    ServiceDireccion DADireccion = new ServiceDireccion();
+
+    //Clase services
+
+    direccion = await DADireccion.GetDireccionesByIdRegistrado(Model.IdRegistrado.ToString());
+
+
+}
+
+<h2>DIRECCIONES DEL REGISTRADO</h2>
+
+<p>
+    @Html.ActionLink("Nueva Direccion", "Create", "Direccion", new { Model.IdRegistrado })
+</p>
+
+<table class="table">
+
+    <tr>
+        <th>
+            <label>Secuencial</label>
+        </th>
+        <th>
+            <label>Direccion del Registrado</label>
+        </th>
+    </tr>
+
+    @foreach (var item in direccion)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDirecciones)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+        </tr>
+    }
+
+
+</table>

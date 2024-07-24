@@ -1,0 +1,63 @@
+﻿@model MVCAPP1.Models.Registrado
+
+
+<h2>Detalle - Registrado</h2>
+
+<hr />
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <dl class="dl-horizontal">
+
+            <dd>
+                @Html.DisplayFor(model => model.IdRegistrado)
+            </dd>
+
+            <dd>
+                @Html.DisplayFor(model => model.Identificacion)
+            </dd>
+
+            <dd>
+                @Html.DisplayFor(model => model.NombresCompletos)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FechaRegistro)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FechaRegistro)
+            </dd>
+
+        </dl>
+
+    </div>
+
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input asp-action="Delete" asp-route-IdRegistrado="@Model.IdRegistrado" type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+    </div>
+}
+
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { Model.IdRegistrado }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+
+<div>
+
+
+    @await Html.PartialAsync("~/Views/Direccion/Index.cshtml", Model)
+
+
+</div>
