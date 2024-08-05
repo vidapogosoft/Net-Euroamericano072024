@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MVCAppv2.Models.Categoria>
+
+<h1>Consulta de Categorias</h1>
+
+<table class="table">
+	<tr>
+		<th>Codigo</th>
+		<th>Nombre Categoría</th>
+		@* <th>Descrip. Categoría</th>
+		<th>Estado</th> *@
+		<th></th>
+	</tr>
+
+	@foreach(var itemmodel in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(i=> itemmodel.Idcategoria)
+			</td>
+			<td>
+				@Html.DisplayFor(i => itemmodel.Nombre)
+			</td>
+		@* 	<td>
+				@Html.DisplayFor(i => itemmodel.Descripcion)
+			</td>
+			<td>
+				@Html.DisplayFor(i => itemmodel.Estado)
+			</td> *@
+			<td>
+				@Html.ActionLink("Detalles","Details",new { itemmodel.Idcategoria })
+			</td>
+		</tr>
+	}
+
+</table>

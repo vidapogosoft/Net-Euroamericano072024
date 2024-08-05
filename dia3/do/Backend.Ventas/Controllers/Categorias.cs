@@ -41,8 +41,15 @@ namespace Backend.Ventas.Controllers
             return Ok(_categ.ListCategoriaByEstado(estado));
         }
 
-        // POST api/<Categorias>
-        [HttpPost("registro")]
+		// GET api/<Categorias>/5
+		[HttpGet("id/{Idcategoria}")]
+		public IActionResult CategoriaById(int Idcategoria)
+		{
+			return Ok(_categ.CategoriaById(Idcategoria));
+		}
+
+		// POST api/<Categorias>
+		[HttpPost("registro")]
         public IActionResult InsertCategoria([FromBody] Categorium NewItem)
         {
             try

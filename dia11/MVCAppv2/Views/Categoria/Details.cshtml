@@ -1,0 +1,39 @@
+﻿@model MVCAppv2.Models.Categoria
+
+<h1>Detalle de Categoria</h1>
+
+<div class="row">
+	<div class="col-md12">
+		<label>Codigo:</label>
+		<h2>@Html.DisplayFor(i => i.Idcategoria)</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md12">
+		<label>Nombre Categoria:</label>
+		<h2>@Html.DisplayFor(i => i.Nombre)</h2>
+	</div>
+</div>
+
+<div class="row">
+	<table class="table">
+
+		<tr>
+			<td>
+				@Html.DisplayFor(i => i.Descripcion)
+			</td>
+			<td>
+				@Html.DisplayFor(i => i.Estado)
+			</td>
+		</tr>
+
+	</table>
+</div>
+<div class="row">
+	<div>
+		<p>
+			@Html.ActionLink("Regresar", "Index")
+		</p>
+		 
+	</div>
+</div>
