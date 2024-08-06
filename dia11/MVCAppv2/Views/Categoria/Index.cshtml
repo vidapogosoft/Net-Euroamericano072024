@@ -2,6 +2,10 @@
 
 <h1>Consulta de Categorias</h1>
 
+<p>
+	@Html.ActionLink("Crear Categoria", "Create")
+</p>
+
 <table class="table">
 	<tr>
 		<th>Codigo</th>
@@ -28,6 +32,7 @@
 			</td> *@
 			<td>
 				@Html.ActionLink("Detalles","Details",new { itemmodel.Idcategoria })
+				@Html.ActionLink("Editar", "Edit", new { itemmodel.Idcategoria })
 			</td>
 		</tr>
 	}

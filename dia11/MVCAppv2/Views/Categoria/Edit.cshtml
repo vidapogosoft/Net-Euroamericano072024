@@ -1,0 +1,53 @@
+﻿@model MVCAppv2.Models.Categoria
+
+<h1>Edicion de datos de categoria</h1>
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div>
+
+		<hr />
+
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+		<div class="form-control">
+			<label>Codigo de la Categoria:</label>
+			<div class="col-md-10">
+				@Html.DisplayFor(i => i.Idcategoria)
+			</div>
+		</div>
+
+		<div class="form-control">
+			<label>Nombre de la Categoria:</label>
+			<div class="col-md-10">
+				@Html.EditorFor(a => a.Nombre, new { @class = "form-control" })
+				@Html.ValidationMessageFor(a => a.Nombre, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-control">
+			<label>Descripcion de la Categoria:</label>
+			<div class="col-md-10">
+				@Html.EditorFor(a => a.Descripcion, new { @class = "form-control" })
+				@Html.ValidationMessageFor(a => a.Descripcion, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<input type="submit" value="Editar Datos" class="btn btn-dark" />
+		</div>
+
+	</div>
+}
+
+<div class="row">
+	<div>
+		<p>
+			@Html.ActionLink("Regresar", "Index")
+		</p>
+
+	</div>
+</div>
