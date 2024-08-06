@@ -80,8 +80,8 @@ namespace MVCAppv2.Controllers
 
 					client.BaseAddress = new Uri(BaseURL);
 					client.DefaultRequestHeaders.Clear();
-				
-					HttpResponseMessage res = await client.DeleteAsync("api/Categorias/delete2/" + delitem.Idcategoria);
+
+					HttpResponseMessage res = await client.DeleteAsync("api/Categorias/delete1/" + delitem.Idcategoria);
 
 					if (res.IsSuccessStatusCode)
 					{
