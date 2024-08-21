@@ -11,14 +11,14 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
-ConfigureServices(builder.Services);
+//ConfigureServices(builder.Services);
 
-builder.Services.AddScoped<CategoriaRepositorio>();
+//builder.Services.AddScoped<CategoriaRepositorio>();
 
 await builder.Build().RunAsync();
 
 
-static void ConfigureServices(IServiceCollection services)
-{
-    services.AddScoped<IRepositorio, CategoriaRepositorio>();
-}
+//static void ConfigureServices(IServiceCollection services)
+//{
+//    services.AddScoped<IRepositorio, CategoriaRepositorio>();
+//}
