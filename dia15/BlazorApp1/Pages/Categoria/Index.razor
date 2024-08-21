@@ -1,0 +1,93 @@
+﻿@inject Repositorio.CategoriaRepositorio repo
+@page "/Categoria/Index"
+@using System.Net.Http.Headers
+@using Newtonsoft.Json
+
+<h3>Consulta de Categorias</h3>
+
+@if(categorias == null)
+{
+	<span>CARGANDO......</span>
+}
+else if (categorias.Count == 0)
+{
+	<span>NO EXISTEN REGISTROS</span>
+}
+else
+{
+
+	<table class="table">
+		<tr>
+			<th>Codigo</th>
+			<th>Nombre Categoría</th>
+			<th></th>
+			<th></th>
+		</tr>
+
+		@foreach (var itemmodel in categorias)
+		{
+			<tr>
+				<td>
+					@itemmodel.Idcategoria
+				</td>
+				<td>
+					@itemmodel.Nombre
+				</td>
+				<td>
+					<a class="oi oi-pencil" href="/Categoria/Edit/@itemmodel.Idcategoria"></a>
+				</td>
+				<td>
+
+				</td>
+			</tr>
+		}
+
+	</table>
+
+}
+
+@code {
+
+	public List<Models.Categoria>? categorias { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		await CargaDatos();
+	}
+
+	private async Task CargaDatos()
+	{
+		//llamada al api rest
+
+		//METODO 1
+		// var response = await repo.GetRepositorio<List<Models.Categoria>>("http://localhost:5244/api/Categorias");
+
+		// if(!response.Error)
+		// {
+		// 	categorias = response.Response;
+		// }
+
+
+		//METODO 2
+		using (var client = new HttpClient())
+		{
+			//call api backend
+
+			client.BaseAddress = new Uri("http://localhost:5244/");
+			client.DefaultRequestHeaders.Clear();
+			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+			HttpResponseMessage res = await client.GetAsync("api/Categorias");
+
+
+			if (res.IsSuccessStatusCode)
+			{
+				var Response = res.Content.ReadAsStringAsync().Result;
+
+				categorias = JsonConvert.DeserializeObject<List<Models.Categoria>>(Response);
+			}
+
+		}
+
+	}
+}

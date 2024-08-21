@@ -1,4 +1,6 @@
-﻿@page "/"
+﻿@using BlazorApp1.Models
+
+@page "/"
 
 <PageTitle>Index</PageTitle>
 
@@ -8,4 +10,14 @@ Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
 
-<Profile email="vidapogosoft@gmail.com" github="github.com/vidapogosoft"></Profile>
+<Profile personal="prof" ></Profile>
+
+@code{
+
+	DTOProfile prof = new DTOProfile
+	{
+		Email = "victor.portugal@sinergiass.com",
+		GitHub = "github.com/vidapogosoft"
+	};
+
+}

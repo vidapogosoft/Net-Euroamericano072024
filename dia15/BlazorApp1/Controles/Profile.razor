@@ -1,4 +1,6 @@
-﻿<h3>Perfil Profesional</h3>
+﻿@using BlazorApp1.Models
+
+<h3>Perfil Profesional</h3>
 
 
 <div class="row">
@@ -9,14 +11,17 @@
 			Experiencia en arquitectura, desarrollo web y mobile multiplataforma.
 			<br />
 		</p>
-		<p><b>Email: </b> @email </p>
-		<p><b>Github: </b> @github </p>
+		<p><b>Email: </b> @personal.Email </p>
+		<p><b>Github: </b> @personal.GitHub </p>
 	</div>
 </div>
 
 @code{
 	[Parameter]
-	public string? email {get; set;}
-	[Parameter]
-	public string? github { get; set; }
+	public DTOProfile personal { get; set; }
+
+	// [Parameter]
+	// public string? email {get; set;}
+	// [Parameter]
+	// public string? github { get; set; }
 }
